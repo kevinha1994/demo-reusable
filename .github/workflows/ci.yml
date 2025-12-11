@@ -2,16 +2,12 @@ name: CI with E2E
 
 on: [push, pull_request]  # Run this workflow on push and pull requests
 
-# Define python-version once
-env:
-  PY_VERSION: "3.11"
-
 jobs:
   # 1) Call the reusable build workflow (runs unit tests)
   build:
     uses: ./.github/workflows/python-build.yml
     with:
-      python-version: ${{ env.PY_VERSION }}   # Pass Python version to reusable workflow
+      python-version: ${{ vars.TEST_PY_VERSION }}   # Pass Python version to reusable workflow
 
   # 2) Run end-to-end (E2E) tests, but only if build passes
   e2e:
@@ -23,7 +19,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: ${{ env.PY_VERSION }}
+          python-version: ${{ vars.TEST_PY_VERSION }}
         # Install Python 3.11 for E2E tests
 
       - run: |
