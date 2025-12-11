@@ -1,6 +1,6 @@
 name: CI with E2E
 
-on: [push, pull_request]  # Run this workflow on push and pull requests
+on: [push, pull_request, workflow_dispatch]  # Run this workflow on push and pull requests
 
 jobs:
   # 1) Call the reusable build workflow (runs unit tests)
