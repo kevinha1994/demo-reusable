@@ -27,5 +27,5 @@ jobs:
           pip install -r requirements.txt
         # Install dependencies again (each job has its own environment)
 
-      - run: pytest tests/e2e -q
+      - run: pytest tests/e2e -q -s # quiet summary, but show all prints
         # Run only the tests inside the tests/e2e folder
